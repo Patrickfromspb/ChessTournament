@@ -13,8 +13,9 @@ public class Player {
     @GeneratedValue
     private Integer id;
 
-    private String name;
 
+    private String firstName;
+    private String secondName;
     private Integer rating;
 
     public Integer getId() {
@@ -23,12 +24,7 @@ public class Player {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+
     public Integer getRating() {
         return rating;
     }
@@ -36,4 +32,19 @@ public class Player {
         this.rating = rating;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
 }
