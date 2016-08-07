@@ -109,7 +109,7 @@
 	</repositories>
 
 	<build>
-		<finalName>spr-mvc-hib</finalName>
+		<finalName>ChessTournament</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

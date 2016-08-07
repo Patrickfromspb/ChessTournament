@@ -2,6 +2,7 @@ package com.gargolin.controller;
 
 import java.util.List;
 
+import com.gargolin.model.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,58 +11,59 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gargolin.service.TeamService;
+import com.gargolin.service.PlayerService;
 
 @Controller
-@RequestMapping(value="/team")
-public class TeamController {
+@RequestMapping(value="/player")
+public class PlayerController {
 	
 	@Autowired
-	private TeamService teamService;
+	private PlayerService playerService;
 	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
-	public ModelAndView addTeamPage() {
-		ModelAndView modelAndView = new ModelAndView("add-team-form");
-		modelAndView.addObject("team", new Team());
+	public ModelAndView addPlayerPage() {
+		ModelAndView modelAndView = new ModelAndView("add-player-form");
+		modelAndView.addObject("player", new Player());
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView addingTeam(@ModelAttribute Team team) {
+	public ModelAndView addingPlayer(@ModelAttribute Player player) {
 		
 		ModelAndView modelAndView = new ModelAndView("home");
-		teamService.addTeam(team);
+		System.out.println("211");
+		playerService.addPlayer(player);
 		
-		String message = "Team was successfully added.";
+		String message = "Player was successfully added.";
 		modelAndView.addObject("message", message);
 		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/list")
-	public ModelAndView listOfTeams() {
-		ModelAndView modelAndView = new ModelAndView("list-of-teams");
+	public ModelAndView listOPlayers() {
+		ModelAndView modelAndView = new ModelAndView("list-of-player");
 		
-		List<Team> teams = teamService.getTeams();
-		modelAndView.addObject("teams", teams);
+		List<Player> players = playerService.getPlayers();
+		modelAndView.addObject("player", players);
 		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
-	public ModelAndView editTeamPage(@PathVariable Integer id) {
+	public ModelAndView editPlayerPage(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("edit-team-form");
-		Team team = teamService.getTeam(id);
-		modelAndView.addObject("team",team);
+		Player player = playerService.getPlayer(id);
+		modelAndView.addObject("team",player);
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
-	public ModelAndView edditingTeam(@ModelAttribute Team team, @PathVariable Integer id) {
+	public ModelAndView editingPlayer(@ModelAttribute Player player, @PathVariable Integer id) {
 		
 		ModelAndView modelAndView = new ModelAndView("home");
 		
-		teamService.updateTeam(team);
+		playerService.updatePlayer(player);
 		
 		String message = "Team was successfully edited.";
 		modelAndView.addObject("message", message);
@@ -70,9 +72,9 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
-	public ModelAndView deleteTeam(@PathVariable Integer id) {
+	public ModelAndView deletePlayer(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("home");
-		teamService.deleteTeam(id);
+		playerService.deletePlayer(id);
 		String message = "Team was successfully deleted.";
 		modelAndView.addObject("message", message);
 		return modelAndView;

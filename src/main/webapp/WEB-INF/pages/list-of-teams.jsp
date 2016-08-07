@@ -8,11 +8,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>List of teams</title>
+<title>List of players</title>
 </head>
 <body>
-<h1>List of teams</h1>
-<p>Here you can see the list of the teams, edit them, remove or update.</p>
+<h1>List of players</h1>
+<p>Here you can see the list of the players, edit them, remove or update.</p>
 <table border="1px" cellpadding="0" cellspacing="0" >
 <thead>
 <tr>
@@ -20,14 +20,15 @@
 </tr>
 </thead>
 <tbody>
-<c:forEach var="team" items="${teams}">
+<c:forEach var="player" items="${players}">
 <tr>
-	<td>${team.id}</td>
-	<td>${team.name}</td>
-	<td>${team.rating}</td>
+	<td>${player.id}</td>
+	<td>${player.firstName}</td>
+	<td>${player.secondName}</td>
+	<td>${player.startRating}</td>
 	<td>
-	<a href="${pageContext.request.contextPath}/team/edit/${team.id}.html">Edit</a><br/>
-	<a href="${pageContext.request.contextPath}/team/delete/${team.id}.html">Delete</a><br/>
+	<a href="${pageContext.request.contextPath}/player/edit/${player.id}.html">Edit</a><br/>
+	<a href="${pageContext.request.contextPath}/player/delete/${player.id}.html">Delete</a><br/>
 	</td>
 </tr>
 </c:forEach>
