@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gargolin.service.PlayerService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping(value="/player")
 public class PlayerController {
@@ -28,10 +30,10 @@ public class PlayerController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView addingPlayer(@ModelAttribute Player player) {
-		
+	public ModelAndView addingPlayer(@ModelAttribute Player player, HttpServletRequest request) {
+
 		ModelAndView modelAndView = new ModelAndView("home");
-		System.out.println("211");
+		System.out.println(request.toString());
 		playerService.addPlayer(player);
 		
 		String message = "Player was successfully added.";
@@ -42,19 +44,19 @@ public class PlayerController {
 	
 	@RequestMapping(value="/list")
 	public ModelAndView listOPlayers() {
-		ModelAndView modelAndView = new ModelAndView("list-of-player");
+		ModelAndView modelAndView = new ModelAndView("list-of-players");
 		
 		List<Player> players = playerService.getPlayers();
-		modelAndView.addObject("player", players);
+		modelAndView.addObject("players", players);
 		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
 	public ModelAndView editPlayerPage(@PathVariable Integer id) {
-		ModelAndView modelAndView = new ModelAndView("edit-team-form");
+		ModelAndView modelAndView = new ModelAndView("edit-player-form");
 		Player player = playerService.getPlayer(id);
-		modelAndView.addObject("team",player);
+		modelAndView.addObject("player",player);
 		return modelAndView;
 	}
 	

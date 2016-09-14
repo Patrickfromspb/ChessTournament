@@ -16,7 +16,7 @@
 <table border="1px" cellpadding="0" cellspacing="0" >
 <thead>
 <tr>
-<th width="10%">id</th><th width="15%">name</th><th width="10%">rating</th><th width="10%">actions</th>
+<th width="10%">id</th><th width="15%">FirstName</th><th width="10%">SecondName</th><th width="10%">Rating</th><th width="10%">actions</th>
 </tr>
 </thead>
 <tbody>
@@ -25,7 +25,7 @@
 	<td>${player.id}</td>
 	<td>${player.firstName}</td>
 	<td>${player.secondName}</td>
-	<td>${player.startRating}</td>
+	<td>${player.currentRating}</td>
 	<td>
 	<a href="${pageContext.request.contextPath}/player/edit/${player.id}.html">Edit</a><br/>
 	<a href="${pageContext.request.contextPath}/player/delete/${player.id}.html">Delete</a><br/>

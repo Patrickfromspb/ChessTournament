@@ -12,7 +12,9 @@
 <p>
 ${message}<br/>
 <a href="${pageContext.request.contextPath}/player/add.html">Add new player</a><br/>
+<a href="${pageContext.request.contextPath}/tournament/add.html">Add new tournament</a><br/>
 <a href="${pageContext.request.contextPath}/player/list.html">Player list</a><br/>
+<a href="${pageContext.request.contextPath}/tournament/list.html">Tournament list</a><br/>
 </p>
 </body>
 </html>

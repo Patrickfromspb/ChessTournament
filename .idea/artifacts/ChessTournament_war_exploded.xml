@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="spr-mvc-hib:war exploded">
-    <output-path>$PROJECT_DIR$/target/spr-mvc-hib</output-path>
+  <artifact type="exploded-war" name="ChessTournament:war exploded">
+    <output-path>$PROJECT_DIR$/target/ChessTournament</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="spr-mvc-hib" />
+          <element id="module-output" name="ChessTournament" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:4.2.0.Final" />
@@ -38,9 +38,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/spr-mvc-hib/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/ChessTournament/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="spr-mvc-hib/web/Web" />
+      <element id="javaee-facet-resources" facet="ChessTournament/web/Web" />
     </root>
   </artifact>
 </component>

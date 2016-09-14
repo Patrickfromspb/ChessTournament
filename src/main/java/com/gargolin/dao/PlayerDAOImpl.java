@@ -19,8 +19,7 @@ public class PlayerDAOImpl implements PlayerDAO {
 	}
 
 	public void addPlayer(Player player) {
-		System.out.println("32r2421211");
-		System.out.println(player.getCurrentRating()+player.getFirstName()+player.getStartRating()+player.getSecondName());
+
 		getCurrentSession().save(player);
 	}
 
@@ -47,7 +46,8 @@ public class PlayerDAOImpl implements PlayerDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Player> getPlayers() {
-		return getCurrentSession().createQuery("from players").list();
+		System.out.println("GHJJ");
+		return getCurrentSession().createQuery("from Player").list();
 	}
 
 }
