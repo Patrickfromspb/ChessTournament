@@ -14,10 +14,10 @@ public class TournamentDetail {
     @GeneratedValue
     @Column(name = "TOURNAMENTDETAILS_ID")
     private Integer id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "PLAYER_ID")
     private Player player;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "TOURNAMENT_ID")
     private Tournament tournament;
     public Integer getId() {

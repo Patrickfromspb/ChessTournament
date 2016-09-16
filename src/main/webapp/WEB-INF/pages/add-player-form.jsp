@@ -27,7 +27,7 @@
 		</tr>
 		<tr>
 			<td>Rating:</td>
-			<td><form:input path="currentRating"/></td>
+			<td><form:input path="startRating"/></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="Add"/></td>

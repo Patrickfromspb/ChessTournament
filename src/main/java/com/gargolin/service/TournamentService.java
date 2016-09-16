@@ -15,5 +15,5 @@ public interface TournamentService {
     public List<Tournament> getTournaments();
     public Tournament getTournament(int id);
     public List<Player> getPlayers();
-
+    public void updateParty(String firstPlayer, String secondPlayer, String tournament);
 }

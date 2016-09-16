@@ -67,7 +67,7 @@ public class PlayerController {
 		
 		playerService.updatePlayer(player);
 		
-		String message = "Team was successfully edited.";
+		String message = "Player was successfully edited.";
 		modelAndView.addObject("message", message);
 		
 		return modelAndView;
@@ -77,7 +77,7 @@ public class PlayerController {
 	public ModelAndView deletePlayer(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("home");
 		playerService.deletePlayer(id);
-		String message = "Team was successfully deleted.";
+		String message = "Player was successfully deleted.";
 		modelAndView.addObject("message", message);
 		return modelAndView;
 	}

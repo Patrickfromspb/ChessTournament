@@ -1,6 +1,7 @@
 package com.gargolin.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="players")
@@ -10,8 +11,6 @@ public class Player {
     @GeneratedValue
     @Column(name = "PLAYER_ID")
     private Integer id;
-
-
     private String firstName;
     private String secondName;
     private Integer startRating;
@@ -59,5 +58,15 @@ public class Player {
 
     public void setCurrentRating(Integer currentRating) {
         this.currentRating = currentRating;
+    }
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "firstPlayer", cascade = CascadeType.REMOVE)
+    private Set<Party> party;
+
+    public Set<Party> getParty() {
+        return party;
+    }
+
+    public void setParty(Set<Party> party) {
+        this.party = party;
     }
 }

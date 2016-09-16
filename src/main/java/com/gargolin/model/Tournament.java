@@ -43,15 +43,25 @@ public class Tournament {
     public void setJudgeName(String judgeName) {
         this.judgeName = judgeName;
     }
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tournament")
-    private Set<TournamentDetail> tournamentDetails;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tournament", cascade = CascadeType.REMOVE)
+    private Set<TournamentDetail> tournamentDetail;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tournament", cascade = CascadeType.REMOVE)
+    private Set<Party> party;
 
 
-    public Set<TournamentDetail> getTournamentDetails() {
-        return tournamentDetails;
+    public Set<TournamentDetail> getTournamentDetail() {
+        return tournamentDetail;
     }
 
-    public void setTournamentDetails(Set<TournamentDetail> tournamentDetails) {
-        this.tournamentDetails = tournamentDetails;
+    public void setTournamentDetail(Set<TournamentDetail> tournamentDetail) {
+        this.tournamentDetail = tournamentDetail;
+    }
+
+    public Set<Party> getParty() {
+        return party;
+    }
+
+    public void setParty(Set<Party> party) {
+        this.party = party;
     }
 }
