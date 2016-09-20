@@ -2,6 +2,7 @@ package com.gargolin.model;
 
 import javax.persistence.*;
 import java.util.Random;
+import java.util.Set;
 
 import com.sun.istack.internal.Nullable;
 import org.apache.commons.lang.builder.*;
@@ -9,11 +10,11 @@ import org.apache.commons.lang.builder.*;
  * Created by User on 13.09.2016.
  */
 @Entity
-@Table(name="parties")
-public class Party {
+@Table(name="games")
+public class Game {
     @Id
     @GeneratedValue
-    @Column(name = "PARTY_ID")
+    @Column(name = "game_ID")
     private Integer id;
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "FIRSTPLAYER_ID",referencedColumnName = "PLAYER_ID")
@@ -65,8 +66,11 @@ public class Party {
     public void setResult(int result) {
         this.result = result;
     }
-    public Party(){}
-    public Party(Player firstPlayer, Player secondPlayer, Tournament tournament){
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "game", cascade = CascadeType.REMOVE)
+    private Set<Change> change;
+    public Game(){}
+    public Game(Player firstPlayer, Player secondPlayer, Tournament tournament){
         this.firstPlayer=firstPlayer;
         this.secondPlayer=secondPlayer;
         this.tournament=tournament;
@@ -78,10 +82,10 @@ public class Party {
         if (obj == this)  return true;
         if (obj == null)  return false;
         boolean result=false;
-        if (obj instanceof Party) {
-           result= (Player)((Party) obj).getFirstPlayer()==this.firstPlayer&&
-                    (Player)((Party) obj).getSecondPlayer()==this.secondPlayer&&
-                    (Tournament)((Party) obj).getTournament()==this.tournament;
+        if (obj instanceof Game) {
+           result= (Player)((Game) obj).getFirstPlayer()==this.firstPlayer&&
+                    (Player)((Game) obj).getSecondPlayer()==this.secondPlayer&&
+                    (Tournament)((Game) obj).getTournament()==this.tournament;
         }
             return result;
 

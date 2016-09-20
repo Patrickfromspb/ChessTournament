@@ -27,6 +27,7 @@
 	<td>${tournament.judgeName}</td>
 	<td>
 		<a href="${pageContext.request.contextPath}/tournament/show/${tournament.id}.html">Show</a><br/>
+		<a href="${pageContext.request.contextPath}/tournament/changes/${tournament.id}.html">Changes</a><br/>
 	</td>
 </tr>
 </c:forEach>

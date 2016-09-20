@@ -27,21 +27,13 @@
 			<td>JudgeName</td>
 			<td><form:input path="judgeName"/></td>
 		</tr>
-		<tr>
-			<td><input type="submit" value="Add"/></td>
-			<td></td>
-		</tr>
 		</tbody>
 	</table>
 
-		<select  multiple="true" size="${size}" name="Players">
-	< 		<c:forEach items="${player}" var="player">
-			<option value="${player.id}"> ${player.firstName} ${player.secondName}</option>
-		</c:forEach>
-		</select>
-
-
-
+	 		<c:forEach items="${player}" var="player">
+			<input type="checkbox"  name="Players" value="${player.id}">${player.firstName} ${player.secondName}<br>
+			</c:forEach>
+			<input type="submit" value="Add"/></td>
 </form:form>
 <p><a href="${pageContext.request.contextPath}/index.html">Home page</a></p>
 </body>

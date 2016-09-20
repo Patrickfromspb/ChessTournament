@@ -3,6 +3,7 @@ package com.gargolin.dao;
 import java.util.List;
 
 import com.gargolin.model.Player;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +47,7 @@ public class PlayerDAOImpl implements PlayerDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Player> getPlayers() {
-		System.out.println("GHJJ");
-		return getCurrentSession().createQuery("from Player").list();
+		return getCurrentSession().createCriteria(Player.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 
 }

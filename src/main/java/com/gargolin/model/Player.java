@@ -51,7 +51,9 @@ public class Player {
     public void setStartRating(Integer startRating) {
         this.startRating = startRating;
     }
-
+    public void setStartRating(String startRating) {
+        this.startRating = 1000;
+    }
     public Integer getCurrentRating() {
         return currentRating;
     }
@@ -60,13 +62,17 @@ public class Player {
         this.currentRating = currentRating;
     }
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "firstPlayer", cascade = CascadeType.REMOVE)
-    private Set<Party> party;
+    private Set<Game> game;
 
-    public Set<Party> getParty() {
-        return party;
+    public Set<Game> getGame() {
+        return game;
     }
 
-    public void setParty(Set<Party> party) {
-        this.party = party;
+    public void setGame(Set<Game> game) {
+        this.game = game;
+    }
+    @Override
+    public String toString() {
+        return this.firstName+" "+this.secondName+" "+this.currentRating;
     }
 }

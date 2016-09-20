@@ -1,7 +1,10 @@
 package com.gargolin.controller;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
+import com.gargolin.model.Game;
 import com.gargolin.model.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,25 +33,22 @@ public class PlayerController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView addingPlayer(@ModelAttribute Player player, HttpServletRequest request) {
-
-		ModelAndView modelAndView = new ModelAndView("home");
-		System.out.println(request.toString());
+	public ModelAndView addingPlayer(@ModelAttribute Player player) {
+		ModelAndView modelAndView = new ModelAndView("add-player-form");
+		if (player.getFirstName()==null || player.getFirstName()==null){
+			modelAndView.addObject("message", "Player was not added, because you didn't fill out the form");
+		}
 		playerService.addPlayer(player);
-		
-		String message = "Player was successfully added.";
+		String message = "Player" +player.toString()+"was successfully added.";
 		modelAndView.addObject("message", message);
-		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/list")
 	public ModelAndView listOPlayers() {
 		ModelAndView modelAndView = new ModelAndView("list-of-players");
-		
 		List<Player> players = playerService.getPlayers();
 		modelAndView.addObject("players", players);
-		
 		return modelAndView;
 	}
 	
@@ -56,30 +56,25 @@ public class PlayerController {
 	public ModelAndView editPlayerPage(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("edit-player-form");
 		Player player = playerService.getPlayer(id);
+		Set<Game> gameSet=player.getGame();
+		for (Iterator<Game> iterator = gameSet.iterator(); iterator.hasNext();) {
+			Game game =  iterator.next();
+			if (game.getResult()<0 || game.getResult()>2) {
+				iterator.remove();
+			}
+		}
+		player.setGame(gameSet);
 		modelAndView.addObject("player",player);
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
 	public ModelAndView editingPlayer(@ModelAttribute Player player, @PathVariable Integer id) {
-		
 		ModelAndView modelAndView = new ModelAndView("home");
-		
+		player.setCurrentRating(player.getStartRating());
 		playerService.updatePlayer(player);
-		
 		String message = "Player was successfully edited.";
 		modelAndView.addObject("message", message);
-		
 		return modelAndView;
 	}
-	
-	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
-	public ModelAndView deletePlayer(@PathVariable Integer id) {
-		ModelAndView modelAndView = new ModelAndView("home");
-		playerService.deletePlayer(id);
-		String message = "Player was successfully deleted.";
-		modelAndView.addObject("message", message);
-		return modelAndView;
-	}
-
 }

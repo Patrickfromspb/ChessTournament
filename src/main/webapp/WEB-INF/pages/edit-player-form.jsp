@@ -31,29 +31,23 @@
 			<td>Initial Rating:</td>
 			<td><form:input path="startRating"/></td>
 		</tr>
-		<tr>
-			<td><input type="submit" value="Add"/></td>
-			<td></td>
-		</tr>
 		</tbody>
+	</table><table>
+			<thead>
+					<tr>
+						<th width="20%">Player</th><th width="25%">Result</th><th width="30%">Tournament</th>
+					</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="game" items="${player.game}"><tr>
+							<td>${game.secondPlayer.firstName} ${game.secondPlayer.secondName}</td>
+							<td>${game.result/2} </td>
+							<td>${game.tournament.tournamentName} ${game.tournament.id}</td>
+				</tr></c:forEach>
+			</tbody>
 	</table>
-	<table border="1px" cellpadding="0" cellspacing="0" >
-		<thead>
-	<tr>
-		<th width="20%">Player</th><th width="25%">Result</th><th width="30%">Tournament</th>
-	</tr>
-	</thead>
-	<tbody>
-	<c:forEach var="party" items="${player.party}">
-	<tr>
-		<td>${party.secondPlayer.firstName} ${party.secondPlayer.secondName}</td>
-		<td>${party.result} </td>
-		<br>${party.tournament.tournamentName} ${party.tournament.id}</td><br/>
-	</tr>
-	</c:forEach>
+<input type="submit" value="EDIT"/>
 </form:form>
-</tbody>
-</table>
-<p><a href="${pageContext.request.contextPath}/index.html">Home page</a></p>
+<p><a href="${pageContext.request.contextPath}/.html">Home page</a></p>
 </body>
 </html>

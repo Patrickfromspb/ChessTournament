@@ -45,8 +45,9 @@ public class Tournament {
     }
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "tournament", cascade = CascadeType.REMOVE)
     private Set<TournamentDetail> tournamentDetail;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "tournament", cascade = CascadeType.REMOVE)
-    private Set<Party> party;
+    private Set<Game> game;
 
 
     public Set<TournamentDetail> getTournamentDetail() {
@@ -57,11 +58,11 @@ public class Tournament {
         this.tournamentDetail = tournamentDetail;
     }
 
-    public Set<Party> getParty() {
-        return party;
+    public Set<Game> getGame() {
+        return game;
     }
 
-    public void setParty(Set<Party> party) {
-        this.party = party;
+    public void setGame(Set<Game> game) {
+        this.game = game;
     }
 }

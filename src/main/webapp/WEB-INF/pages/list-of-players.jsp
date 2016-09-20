@@ -28,7 +28,6 @@
 	<td>${player.currentRating}</td>
 	<td>
 	<a href="${pageContext.request.contextPath}/player/edit/${player.id}.html">Edit</a><br/>
-	<a href="${pageContext.request.contextPath}/player/delete/${player.id}.html">Delete</a><br/>
 	</td>
 </tr>
 </c:forEach>
