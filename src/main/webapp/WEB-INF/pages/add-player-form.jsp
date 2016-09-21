@@ -37,7 +37,7 @@
 	</table>
 
 </form:form>
-<p>{$message}</p>
+<p>${message}</p>
 <p><a href="${pageContext.request.contextPath}/index.html">Home page</a></p>
 </body>
 </html>

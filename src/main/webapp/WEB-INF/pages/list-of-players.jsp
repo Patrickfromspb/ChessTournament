@@ -20,6 +20,7 @@
 </tr>
 </thead>
 <tbody>
+
 <c:forEach var="player" items="${players}">
 <tr>
 	<td>${player.id}</td>

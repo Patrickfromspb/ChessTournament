@@ -1,9 +1,9 @@
 package com.gargolin.service;
 
 
+import com.gargolin.model.ChangesView;
 import com.gargolin.model.Player;
 import com.gargolin.model.Tournament;
-import org.hibernate.Session;
 
 import java.util.List;
 
@@ -11,9 +11,15 @@ import java.util.List;
  * Created by User on 08.09.2016.
  */
 public interface TournamentService {
-    public void addTournament(Tournament tournament, List<String> players);
-    public List<Tournament> getTournaments();
-    public Tournament getTournament(int id);
-    public List<Player> getPlayers();
-    public void updategame(String firstPlayer, String secondPlayer, String tournament);
+    void addTournament(Tournament tournament, List<String> players);
+
+    List<Tournament> getTournaments();
+
+    Tournament getTournament(int id);
+
+    List<Player> getPlayers();
+
+    void updategame(String firstPlayer, String secondPlayer, String tournament);
+
+    List<ChangesView> getChangesView(int id);
 }

@@ -1,14 +1,12 @@
 package com.gargolin.model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 
 /**
  * Created by User on 20.08.2016.
  */
 @Entity
-@Table(name="tournamentdetails")
+@Table(name = "tournamentdetails")
 public class TournamentDetail {
     @Id
     @GeneratedValue
@@ -20,10 +18,21 @@ public class TournamentDetail {
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "TOURNAMENT_ID")
     private Tournament tournament;
+
+    public TournamentDetail() {
+
+    }
+
+    public TournamentDetail(Tournament tournament, Player player) {
+        this.player = player;
+        this.tournament = tournament;
+    }
+
     public Integer getId() {
 
         return id;
     }
+
     public void setId(Integer id) {
 
         this.id = id;
@@ -43,13 +52,6 @@ public class TournamentDetail {
 
     public void setTournament(Tournament tournament) {
         this.tournament = tournament;
-    }
-    public TournamentDetail(){
-
-    }
-    public TournamentDetail(Tournament tournament, Player player){
-        this.player=player;
-        this.tournament=tournament;
     }
 }
 

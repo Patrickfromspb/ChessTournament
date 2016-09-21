@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="players")
+@Table(name = "players")
 public class Player {
 
     @Id
@@ -15,11 +15,14 @@ public class Player {
     private String secondName;
     private Integer startRating;
     private Integer currentRating;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "firstPlayer", cascade = CascadeType.REMOVE)
+    private Set<Game> game;
 
     public Integer getId() {
 
         return id;
     }
+
     public void setId(Integer id) {
 
         this.id = id;
@@ -51,9 +54,11 @@ public class Player {
     public void setStartRating(Integer startRating) {
         this.startRating = startRating;
     }
+
     public void setStartRating(String startRating) {
         this.startRating = 1000;
     }
+
     public Integer getCurrentRating() {
         return currentRating;
     }
@@ -61,8 +66,6 @@ public class Player {
     public void setCurrentRating(Integer currentRating) {
         this.currentRating = currentRating;
     }
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "firstPlayer", cascade = CascadeType.REMOVE)
-    private Set<Game> game;
 
     public Set<Game> getGame() {
         return game;
@@ -71,8 +74,9 @@ public class Player {
     public void setGame(Set<Game> game) {
         this.game = game;
     }
+
     @Override
     public String toString() {
-        return this.firstName+" "+this.secondName+" "+this.currentRating;
+        return this.firstName + " " + this.secondName + " " + this.currentRating;
     }
 }

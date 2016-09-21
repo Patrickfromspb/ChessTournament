@@ -4,36 +4,36 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+         pageEncoding="ISO-8859-1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Add Tournament page</title>
+    <title>Add Tournament page</title>
 </head>
 <body>
 <h1>Add tournament page</h1>
 <p>Here you can add a new Tournament.</p>
 <form:form method="POST" modelAttribute="tournament" action="${pageContext.request.contextPath}/tournament/add.html">
-	<table>
-		<tbody>
-		<tr>
-			<td>tournamentName:</td>
-			<td><form:input path="tournamentName"/></td>
-		</tr>
-		<tr>
-			<td>JudgeName</td>
-			<td><form:input path="judgeName"/></td>
-		</tr>
-		</tbody>
-	</table>
+    <table>
+        <tbody>
+        <tr>
+            <td>tournamentName:</td>
+            <td><form:input path="tournamentName"/></td>
+        </tr>
+        <tr>
+            <td>JudgeName</td>
+            <td><form:input path="judgeName"/></td>
+        </tr>
+        </tbody>
+    </table>
 
-	 		<c:forEach items="${player}" var="player">
-			<input type="checkbox"  name="Players" value="${player.id}">${player.firstName} ${player.secondName}<br>
-			</c:forEach>
-			<input type="submit" value="Add"/></td>
+    <c:forEach items="${player}" var="player">
+        <input type="checkbox" name="Players" value="${player.id}">${player.firstName} ${player.secondName}<br>
+    </c:forEach>
+    <input type="submit" value="Add"/></td>
 </form:form>
 <p><a href="${pageContext.request.contextPath}/index.html">Home page</a></p>
 </body>

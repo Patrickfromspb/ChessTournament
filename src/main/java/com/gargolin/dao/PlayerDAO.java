@@ -6,10 +6,14 @@ import java.util.List;
 
 public interface PlayerDAO {
 
-    public void addPlayer(Player player);
-    public void updatePlayer(Player player);
-    public Player getPlayer(int id);
-    public void deletePlayer(int id);
-    public List<Player> getPlayers();
+    void addPlayer(Player player);
+
+    void updatePlayer(Player player);
+
+    Player getPlayer(int id);
+
+    void deletePlayer(int id);
+
+    List<Player> getPlayers();
 
 }
