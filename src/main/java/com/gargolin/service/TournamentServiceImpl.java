@@ -41,8 +41,8 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     @Override
-    public void updategame(String firstPlayer, String secondPlayer, String tournament) {
-        tournamentDAO.updategame(firstPlayer, secondPlayer, tournament);
+    public void updateGame(String firstPlayer, String secondPlayer, String tournament) {
+        tournamentDAO.updateGame(firstPlayer, secondPlayer, tournament);
     }
 
     @Override

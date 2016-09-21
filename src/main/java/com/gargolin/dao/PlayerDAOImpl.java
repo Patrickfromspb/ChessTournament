@@ -35,8 +35,7 @@ public class PlayerDAOImpl implements PlayerDAO {
     }
 
     public Player getPlayer(int id) {
-        Player player = (Player) getCurrentSession().get(Player.class, id);
-        return player;
+        return (Player) getCurrentSession().get(Player.class, id);
     }
 
     public void deletePlayer(int id) {

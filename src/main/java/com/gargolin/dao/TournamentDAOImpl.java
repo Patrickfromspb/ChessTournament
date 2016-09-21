@@ -1,7 +1,6 @@
 package com.gargolin.dao;
 
 import com.gargolin.model.*;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class TournamentDAOImpl implements TournamentDAO {
     public void addTournament(Tournament tournament, List<String> players) {
         ArrayList<Player> list = new ArrayList<>();
         for (String s : players) {
-            list.add((Player) getCurrentSession().createQuery("from Player where id=" + s).list().get(0));
+            list.add((Player) getCurrentSession().get(Player.class, Integer.getInteger(s)));
         }
         getCurrentSession().save(tournament);
         for (Player player : list)
@@ -47,7 +46,7 @@ public class TournamentDAOImpl implements TournamentDAO {
     }
 
     @Override
-    public void updategame(String firstPlayer, String secondPlayer, String tournament) {
+    public void updateGame(String firstPlayer, String secondPlayer, String tournament) {
         Game game = (Game) getCurrentSession().createQuery("from Game where firstPlayer.id=" + firstPlayer + " and secondPlayer.id=" + secondPlayer + " and tournament.id=" + tournament).list().get(0);
         int oldResult = game.getResult();
         final int newResult;
@@ -80,21 +79,13 @@ public class TournamentDAOImpl implements TournamentDAO {
 
     @Override
     public List<ChangesView> getChangesView(int id) {
-        try {
-            return getCurrentSession()
+        return getCurrentSession()
                     .createQuery("Select new com.gargolin.model.ChangesView(g.firstPlayer, g.secondPlayer, c.result, c.timestamp) from Change c join c.game g where g.tournament.id=" + id + " order by c.timestamp")
                     .list();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-            return null;
-        }
-
     }
 
-
     public Tournament getTournament(int id) {
-        Tournament tournament = (Tournament) getCurrentSession().get(Tournament.class, id);
-        return tournament;
+        return (Tournament) getCurrentSession().get(Tournament.class, id);
     }
 
 }

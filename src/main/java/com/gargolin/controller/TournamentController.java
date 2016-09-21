@@ -69,8 +69,8 @@ public class TournamentController {
         for (Game game : gameSet) gameMap.put(game, game.getResult());
         ArrayList<Integer> results = new ArrayList<Integer>();
         for (int i = 0; i < players.size(); i++)
-            for (int j = 0; j < players.size(); j++) {
-                results.add(gameMap.get(new Game(players.get(i), players.get(j), tournament)));
+            for (Player player : players) {
+                results.add(gameMap.get(new Game(players.get(i), player, tournament)));
             }
         modelAndView.addObject("results", results);
         return modelAndView;

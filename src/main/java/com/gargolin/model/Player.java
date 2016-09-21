@@ -75,8 +75,4 @@ public class Player {
         this.game = game;
     }
 
-    @Override
-    public String toString() {
-        return this.firstName + " " + this.secondName + " " + this.currentRating;
-    }
 }

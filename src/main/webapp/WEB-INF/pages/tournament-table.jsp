@@ -138,9 +138,9 @@
     <tbody>
     <%
         int i = -1;
-        double t = 0;
-        int j = 0;
-        int k = 0;
+        double t;
+        int j;
+        int k;
         int size = (Integer) request.getAttribute("size");
         ArrayList<Integer> list = (ArrayList<Integer>) request.getAttribute("results");
         ArrayList<Player> players = (ArrayList<Player>) request.getAttribute("player");

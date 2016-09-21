@@ -20,7 +20,7 @@ public interface TournamentDAO {
 
     List<Player> getPlayers();
 
-    void updategame(String firstPlayer, String secondPlayer, String tournament);
+    void updateGame(String firstPlayer, String secondPlayer, String tournament);
 
     List<ChangesView> getChangesView(int id);
 
