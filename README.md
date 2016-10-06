@@ -1,6 +1,6 @@
 An application written in Jave EE using Spring, Hibernate and Maven for building and MySQL database <br>
 
-Description
+Description<br>
 It lets add Players, set their name and rating.<br>
 Basing on the list of existing players it can make tournaments among selected players.<br>
 It displays tournament tables and lets edit results online using Ajax call it automatically updates database tables that contains results.
